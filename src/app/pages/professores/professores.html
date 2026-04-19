@@ -1,0 +1,28 @@
+<app-site-shell>
+  <main class="page">
+    <section class="page__section page__intro">
+      <p class="page__eyebrow">Equipe</p>
+      <h1 class="page__title">Professores</h1>
+    </section>
+
+    <section class="page__section" *ngFor="let professor of professors; let index = index">
+      <div class="professor-block" [class.professor-block--reverse]="index % 2 === 1">
+        <div class="professor-block__media">
+          <!-- Substituir pela imagem real do professor depois -->
+          <!-- imagem ideal: retrato do professor em treino ou em posição de instrução -->
+          <img
+            class="professor-block__image"
+            [src]="professor.image"
+            [alt]="'Foto do professor ' + professor.name"
+          />
+        </div>
+
+        <div class="professor-block__body">
+          <p class="professor-block__eyebrow">Professor {{ index + 1 }}</p>
+          <h2 class="professor-block__name">{{ professor.name }}</h2>
+          <p class="professor-block__text">{{ professor.description }}</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</app-site-shell>

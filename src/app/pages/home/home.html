@@ -1,0 +1,247 @@
+<header class="topbar">
+  <div class="topbar__inner">
+    <nav class="topbar__group topbar__group--left" aria-label="Top bar links left">
+      <a class="topbar__link" routerLink="/conhecer">JT Loja</a>
+      <a class="topbar__link" routerLink="/reservar-aula">JT EVENTOS</a>
+    </nav>
+  </div>
+</header>
+
+<nav
+  class="main-nav"
+  [class.nav-hidden]="isNavHidden"
+  [class.main-nav--pinned]="isNavPinnedToTop"
+  [class.main-nav--scrolled]="isNavScrolled"
+  aria-label="Navegacao principal"
+>
+  <div class="main-nav__inner">
+    <a class="main-nav__brand" routerLink="/" aria-label="Pagina inicial">
+      <span class="main-nav__logo-frame">
+        <img class="main-nav__logo" src="/assets/ImagensVideoHome/LOGO.svg" alt="Logo Jiu Thai" />
+      </span>
+    </a>
+
+    <div class="main-nav__menu" role="menubar" aria-label="Menu principal">
+      <a class="main-nav__link" routerLink="/sobre" role="menuitem">Sobre nós</a>
+      <a class="main-nav__link" routerLink="/porque-jiu-thai" role="menuitem">Por que Jiu Thai</a>
+      <a class="main-nav__link" routerLink="/aulas" role="menuitem">Aulas</a>
+    </div>
+
+    <div class="main-nav__actions">
+      <a class="main-nav__button main-nav__button--secondary" routerLink="/conhecer">Conhecer</a>
+      <a class="main-nav__button main-nav__button--primary" routerLink="/contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="inicio" aria-label="Hero principal Jiu Thai">
+  <div class="hero__media" aria-hidden="true">
+    <video
+      #heroVideo
+      class="hero__video"
+      autoplay
+      loop
+      muted
+      defaultMuted
+      playsinline
+      preload="auto"
+      webkit-playsinline="true"
+    >
+      <!-- Substitua o caminho abaixo pelo seu video final -->
+      <source src="/assets/ImagensVideoHome/VIDEO - HERO SECTION.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Jiu Thai</p>
+    <h1 class="hero__title">The Fight House</h1>
+    <p class="hero__subtitle">Começar na Jiu Thai é fácil.</p>
+    <a class="hero__cta" routerLink="/reservar-aula">Reserve sua aula gratuita</a>
+  </div>
+</section>
+
+<section class="muaythai-section" id="por-que-jiu-thai" aria-labelledby="muaythai-title">
+  <div class="muaythai-section__inner">
+    <h2 class="muaythai-section__title" id="muaythai-title">O que é Muay Thai?</h2>
+
+    <div class="muaythai-section__grid">
+      <div class="muaythai-section__column">
+        <p class="muaythai-section__text">
+          O Muay Thai, conhecido como “A Arte das Oito Armas”, é uma arte marcial baseada no uso combinado
+          de punhos, cotovelos, joelhos e pernas, aliando técnica, resistência e estratégia. Diferente de
+          depender apenas da força bruta, ele desenvolve precisão, controle e eficiência nos movimentos.
+          É uma prática que capacita indivíduos de todas as idades e níveis físicos a melhorarem sua
+          autodefesa, condicionamento e confiança, independentemente do tamanho ou força.
+        </p>
+
+        <p class="muaythai-section__text">
+          Em sua essência, o Muay Thai trata de controle, disciplina e crescimento pessoal.
+        </p>
+
+        <a class="modality-link" routerLink="/muay-thai">Ver página de Muay Thai</a>
+      </div>
+
+      <div class="muaythai-section__column">
+        <p class="muaythai-section__text">
+          Por meio de um treinamento estruturado, os alunos desenvolvem não apenas habilidades de
+          autodefesa, mas também confiança, resiliência e alto condicionamento físico para a vida toda.
+          É uma jornada de transformação mental e física — dentro e fora do ringue.
+        </p>
+
+        <ul class="muaythai-benefits" aria-label="Benefícios do Muay Thai">
+          <li class="muaythai-benefits__item">Aprenda autodefesa prática</li>
+          <li class="muaythai-benefits__item">Desenvolva disciplina, foco e resiliência</li>
+          <li class="muaythai-benefits__item">
+            Melhore o condicionamento físico, a coordenação e a flexibilidade
+          </li>
+          <li class="muaythai-benefits__item">
+            Junte-se a uma comunidade de apoio que te ajuda a crescer
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-banner" id="aulas" aria-labelledby="quote-banner-text">
+  <div class="quote-banner__overlay"></div>
+
+  <div class="quote-banner__card">
+    <blockquote class="quote-banner__text" id="quote-banner-text">
+      “Minha vida é dedicada ao Muay Thai. Meu objetivo sempre foi construir uma irmandade para expandir
+      e fortalecer essa arte, respeitando sua essência e suas tradições. Meus alunos são uma extensão da
+      minha família. Quero que cada um alcance o seu melhor, enquanto contribui para manter vivo o
+      espírito do Muay Thai. Devemos seguir honrando os valores e os esforços daqueles que vieram antes de
+      nós.”
+    </blockquote>
+
+    <p class="quote-banner__signature">— Thiago Rocha.</p>
+  </div>
+</section>
+
+<section class="jiujitsu-section" id="por-que-jiu-jitsu" aria-labelledby="jiujitsu-title">
+  <div class="jiujitsu-section__inner">
+    <h2 class="jiujitsu-section__title" id="jiujitsu-title">O que é Jiu Jitsu?</h2>
+
+    <div class="jiujitsu-section__grid">
+      <div class="jiujitsu-section__column">
+        <p class="jiujitsu-section__text">
+          O Jiu-Jitsu Brasileiro (BJJ), muitas vezes chamado de “Arte Suave”, é uma arte marcial baseada
+          na alavancagem, técnica e estratégia, em vez da força bruta. Ele capacita indivíduos de todas as
+          idades e tipos físicos a se defenderem com eficácia, sem depender de tamanho ou força.
+        </p>
+
+        <p class="jiujitsu-section__text">
+          Em sua essência, o Jiu-Jitsu é uma prática que desenvolve autocontrole, disciplina e evolução
+          contínua, moldando não apenas o corpo, mas também a mentalidade do praticante.
+        </p>
+
+        <a class="modality-link" routerLink="/jiu-jitsu">Ver página de Jiu Jitsu</a>
+      </div>
+
+      <div class="jiujitsu-section__column">
+        <p class="jiujitsu-section__text">
+          Por meio de um treinamento estruturado, os praticantes desenvolvem não apenas habilidades de
+          autodefesa, mas também confiança, resiliência e condicionamento físico duradouro. Trata-se de
+          uma jornada de evolução mental e física — dentro e fora dos tatames.
+        </p>
+
+        <ul class="jiujitsu-benefits" aria-label="Benefícios do Jiu Jitsu">
+          <li class="jiujitsu-benefits__item">Aprenda autodefesa com técnica, alavancagem e controle</li>
+          <li class="jiujitsu-benefits__item">Desenvolva foco, disciplina e inteligência emocional</li>
+          <li class="jiujitsu-benefits__item">
+            Melhore mobilidade, resistência e condicionamento físico de forma progressiva
+          </li>
+          <li class="jiujitsu-benefits__item">
+            Evolua em uma comunidade que incentiva constância, respeito e superação
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="rodape" aria-labelledby="rodape-titulo">
+  <div class="rodape__inner">
+    <section class="rodape__topo" aria-labelledby="rodape-titulo">
+      <h2 class="rodape__heading" id="rodape-titulo">Navegação do rodapé</h2>
+
+      <div class="rodape__colunas">
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">JIU THAI</h3>
+          <a class="rodape__link" routerLink="/">Início</a>
+          <a class="rodape__link" routerLink="/sobre">Sobre nós</a>
+          <a class="rodape__link" routerLink="/contato">Contato</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">NOSSAS AULAS</h3>
+          <a class="rodape__link" routerLink="/muay-thai">Muay Thai</a>
+          <a class="rodape__link" routerLink="/jiu-jitsu">Jiu Jitsu</a>
+          <a class="rodape__link" routerLink="/reservar-aula">Aula experimental</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">APOIAR</h3>
+          <a class="rodape__link" routerLink="/conhecer">Conhecer</a>
+          <a class="rodape__link" routerLink="/contato">Fale conosco</a>
+          <a class="rodape__link" routerLink="/conhecer">JT Loja</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">COMUNIDADE</h3>
+          <a class="rodape__link" routerLink="/porque-jiu-thai">Nossa filosofia</a>
+          <a class="rodape__link" routerLink="/aulas">Treinos</a>
+          <a class="rodape__link" routerLink="/professores">Professores</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">REDE</h3>
+          <a class="rodape__link" href="#instagram">Instagram</a>
+          <a class="rodape__link" href="#facebook">Facebook</a>
+          <a class="rodape__link" href="#youtube">YouTube</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rodape__marca" aria-label="Marca do rodapé">
+      <!-- Troque a imagem abaixo pela sua arte final do rodapé quando quiser -->
+      <img class="rodape__imagem" src="/assets/ImagensVideoHome/IMAGEM - RODAPE.svg" alt="Imagem de rodapé da Jiu Thai" />
+    </section>
+
+    <section class="rodape__base" aria-label="Informações finais">
+      <div class="rodape__linha"></div>
+
+      <div class="rodape__meta">
+        <div class="rodape__meta-links">
+          <a class="rodape__sub-link" routerLink="/politica-de-privacidade">Política de Privacidade</a>
+          <a class="rodape__sub-link" routerLink="/termos-e-condicoes">Termos e Condições</a>
+        </div>
+
+        <div class="rodape__sociais" aria-label="Redes sociais">
+          <a class="rodape__social" href="#instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.6 1.6a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"/>
+            </svg>
+          </a>
+          <a class="rodape__social" href="#facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.4 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.7-1.6h1.8V4.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4v2.2H7.2v3.2H10V22h3.4Z"/>
+            </svg>
+          </a>
+          <a class="rodape__social" href="#youtube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.8 12 4.8 12 4.8s-5.8 0-7.6.4a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 4.8 2.9 2.9 0 0 0 2 2c1.8.4 7.6.4 7.6.4s5.8 0 7.6-.4a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.4-4.8ZM9.7 15.4V8.6l5.9 3.4-5.9 3.4Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="rodape__creditos">
+        <p class="rodape__texto">© 2026 Jiu Thai. Todos os direitos reservados.</p>
+        <p class="rodape__texto">Site por Joao Gama.</p>
+      </div>
+    </section>
+  </div>
+</footer>

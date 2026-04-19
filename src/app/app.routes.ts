@@ -1,3 +1,29 @@
 import { Routes } from '@angular/router';
+import { Aulas } from './pages/aulas/aulas';
+import { Conhecer } from './pages/conhecer/conhecer';
+import { Contato } from './pages/contato/contato';
+import { Home } from './pages/home/home';
+import { JiuJitsu } from './pages/jiu-jitsu/jiu-jitsu';
+import { MuayThai } from './pages/muay-thai/muay-thai';
+import { PoliticaDePrivacidade } from './pages/politica-de-privacidade/politica-de-privacidade';
+import { PorqueJiuThai } from './pages/porque-jiu-thai/porque-jiu-thai';
+import { Professores } from './pages/professores/professores';
+import { ReservarAula } from './pages/reservar-aula/reservar-aula';
+import { Sobre } from './pages/sobre/sobre';
+import { TemosECondicoes } from './pages/temos-e-condicoes/temos-e-condicoes';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: Home },
+  { path: 'sobre', component: Sobre },
+  { path: 'porque-jiu-thai', component: PorqueJiuThai },
+  { path: 'aulas', component: Aulas },
+  { path: 'contato', component: Contato },
+  { path: 'professores', component: Professores },
+  { path: 'jiu-jitsu', component: JiuJitsu },
+  { path: 'muay-thai', component: MuayThai },
+  { path: 'conhecer', component: Conhecer },
+  { path: 'reservar-aula', component: ReservarAula },
+  { path: 'politica-de-privacidade', component: PoliticaDePrivacidade },
+  { path: 'termos-e-condicoes', component: TemosECondicoes },
+  { path: '**', redirectTo: '' },
+];

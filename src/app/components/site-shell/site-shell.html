@@ -1,0 +1,120 @@
+<header class="topbar">
+  <div class="topbar__inner">
+    <nav class="topbar__group topbar__group--left" aria-label="Top bar links left">
+      <a class="topbar__link" routerLink="/conhecer">JT Loja</a>
+      <a class="topbar__link" routerLink="/reservar-aula">JT EVENTOS</a>
+    </nav>
+  </div>
+</header>
+
+<nav
+  class="main-nav"
+  [class.nav-hidden]="isNavHidden"
+  [class.main-nav--pinned]="isNavPinnedToTop"
+  [class.main-nav--scrolled]="isNavScrolled"
+  aria-label="Navegacao principal"
+>
+  <div class="main-nav__inner">
+    <a class="main-nav__brand" routerLink="/" aria-label="Pagina inicial">
+      <span class="main-nav__logo-frame">
+        <img class="main-nav__logo" src="/assets/ImagensVideoHome/LOGO.svg" alt="Logo Jiu Thai" />
+      </span>
+    </a>
+
+    <div class="main-nav__menu" role="menubar" aria-label="Menu principal">
+      <a class="main-nav__link" routerLink="/sobre" role="menuitem">Sobre nós</a>
+      <a class="main-nav__link" routerLink="/porque-jiu-thai" role="menuitem">Por que Jiu Thai</a>
+      <a class="main-nav__link" routerLink="/aulas" role="menuitem">Aulas</a>
+    </div>
+
+    <div class="main-nav__actions">
+      <a class="main-nav__button main-nav__button--secondary" routerLink="/conhecer">Conhecer</a>
+      <a class="main-nav__button main-nav__button--primary" routerLink="/contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<ng-content></ng-content>
+
+<footer class="rodape" aria-labelledby="rodape-titulo">
+  <div class="rodape__inner">
+    <section class="rodape__topo" aria-labelledby="rodape-titulo">
+      <h2 class="rodape__heading" id="rodape-titulo">Navegação do rodapé</h2>
+
+      <div class="rodape__colunas">
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">JIU THAI</h3>
+          <a class="rodape__link" routerLink="/">Início</a>
+          <a class="rodape__link" routerLink="/sobre">Sobre nós</a>
+          <a class="rodape__link" routerLink="/contato">Contato</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">NOSSAS AULAS</h3>
+          <a class="rodape__link" routerLink="/muay-thai">Muay Thai</a>
+          <a class="rodape__link" routerLink="/jiu-jitsu">Jiu Jitsu</a>
+          <a class="rodape__link" routerLink="/reservar-aula">Aula experimental</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">APOIAR</h3>
+          <a class="rodape__link" routerLink="/conhecer">Conhecer</a>
+          <a class="rodape__link" routerLink="/contato">Fale conosco</a>
+          <a class="rodape__link" routerLink="/conhecer">JT Loja</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">COMUNIDADE</h3>
+          <a class="rodape__link" routerLink="/porque-jiu-thai">Nossa filosofia</a>
+          <a class="rodape__link" routerLink="/aulas">Treinos</a>
+          <a class="rodape__link" routerLink="/professores">Professores</a>
+        </div>
+
+        <div class="rodape__coluna">
+          <h3 class="rodape__titulo">REDE</h3>
+          <a class="rodape__link" href="#instagram">Instagram</a>
+          <a class="rodape__link" href="#facebook">Facebook</a>
+          <a class="rodape__link" href="#youtube">YouTube</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rodape__marca" aria-label="Marca do rodapé">
+      <img class="rodape__imagem" src="/assets/ImagensVideoHome/IMAGEM - RODAPE.svg" alt="Imagem de rodapé da Jiu Thai" />
+    </section>
+
+    <section class="rodape__base" aria-label="Informações finais">
+      <div class="rodape__linha"></div>
+
+      <div class="rodape__meta">
+        <div class="rodape__meta-links">
+          <a class="rodape__sub-link" routerLink="/politica-de-privacidade">Política de Privacidade</a>
+          <a class="rodape__sub-link" routerLink="/termos-e-condicoes">Termos e Condições</a>
+        </div>
+
+        <div class="rodape__sociais" aria-label="Redes sociais">
+          <a class="rodape__social" href="#instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.6 1.6a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"/>
+            </svg>
+          </a>
+          <a class="rodape__social" href="#facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.4 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.7-1.6h1.8V4.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4v2.2H7.2v3.2H10V22h3.4Z"/>
+            </svg>
+          </a>
+          <a class="rodape__social" href="#youtube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.8 12 4.8 12 4.8s-5.8 0-7.6.4a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 4.8 2.9 2.9 0 0 0 2 2c1.8.4 7.6.4 7.6.4s5.8 0 7.6-.4a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.4-4.8ZM9.7 15.4V8.6l5.9 3.4-5.9 3.4Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="rodape__creditos">
+        <p class="rodape__texto">© 2026 Jiu Thai. Todos os direitos reservados.</p>
+        <p class="rodape__texto">Site por Joao Gama.</p>
+      </div>
+    </section>
+  </div>
+</footer>

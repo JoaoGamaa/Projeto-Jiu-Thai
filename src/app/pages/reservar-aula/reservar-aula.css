@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:host {
+  display: block;
+}
+
+/* ─── Page shell ──────────────────────────────────────────────────────────── */
+
+.booking-page {
+  background:
+    radial-gradient(circle at top right, rgba(247, 195, 33, 0.12) 0%, rgba(247, 195, 33, 0) 24%),
+    linear-gradient(180deg, #050505 0%, #101010 100%);
+  color: #fff;
+  min-height: 100vh;
+}
+
+.booking-page__section {
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 7rem 1.5rem 5rem;
+}
+
+.booking-page__title {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  margin: 0 0 2rem;
+  text-transform: uppercase;
+}
+
+/* ─── Form card ───────────────────────────────────────────────────────────── */
+
+.booking-form {
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.96) 0%, rgba(10, 10, 10, 0.94) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.34);
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 2rem;
+}
+
+/* ─── Intro ───────────────────────────────────────────────────────────────── */
+
+.booking-form__intro {
+  display: grid;
+  gap: 0.9rem;
+  padding-bottom: 1.75rem;
+}
+
+/* ─── Section ─────────────────────────────────────────────────────────────── */
+
+.booking-form__section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 1.75rem 0;
+}
+
+/* ─── Text elements ───────────────────────────────────────────────────────── */
+
+.booking-form__kicker {
+  color: #f7c321;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.booking-form__lead,
+.booking-form__helper {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.booking-form__section-title,
+.booking-form__subsection-title {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.booking-form__section-title {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+}
+
+.booking-form__subsection-title {
+  font-size: 1rem;
+}
+
+/* ─── Grid layouts ────────────────────────────────────────────────────────── */
+
+.booking-form__grid {
+  display: grid;
+  gap: 1rem 1.25rem;
+  align-items: start;
+}
+
+.booking-form__grid--3col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.booking-form__grid--2col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ─── Field ───────────────────────────────────────────────────────────────── */
+
+.booking-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+/* ─── Visibility: oculta sem remover do DOM ───────────────────────────────── */
+
+/*
+  Campo invisível: ocupa espaço no grid (sem deslocar vizinhos),
+  mas não é visível nem interativo.
+*/
+.booking-form__field--invisible {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/*
+  Group box invisível: colapsa verticalmente com transição suave.
+  Não usa display:none para preservar o estado do formulário.
+*/
+.booking-form__group-box--invisible {
+  border-color: transparent !important;
+  max-height: 0 !important;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 !important;
+  pointer-events: none;
+}
+
+/* ─── Label ───────────────────────────────────────────────────────────────── */
+
+.booking-form__label {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
+/* ─── Inputs ──────────────────────────────────────────────────────────────── */
+
+.booking-form__input {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  height: 56px;
+  padding: 0 1rem;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+  width: 100%;
+}
+
+.booking-form__input:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.booking-form__input:focus {
+  background: #171717;
+  border-color: #f7c321;
+  box-shadow: 0 0 0 3px rgba(247, 195, 33, 0.16);
+  outline: none;
+}
+
+.booking-form__input:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.booking-form__input--select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+  padding-right: 2.5rem;
+}
+
+.booking-form__input option {
+  background: #111;
+  color: #fff;
+}
+
+.booking-form__textarea {
+  height: auto;
+  min-height: 136px;
+  padding: 1rem;
+  resize: vertical;
+}
+
+/* ─── Radio choice ────────────────────────────────────────────────────────── */
+
+.booking-form__choice-row {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.booking-form__choice {
+  align-items: center;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.93rem;
+  font-weight: 500;
+  gap: 0.7rem;
+  min-height: 56px;
+  padding: 0 1rem;
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease;
+  user-select: none;
+}
+
+.booking-form__choice:hover {
+  background: rgba(247, 195, 33, 0.04);
+  border-color: rgba(247, 195, 33, 0.4);
+}
+
+.booking-form__choice input[type='radio'] {
+  accent-color: #f7c321;
+  flex-shrink: 0;
+}
+
+/* ─── Group box ───────────────────────────────────────────────────────────── */
+
+.booking-form__group-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(247, 195, 33, 0.18);
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 1000px;
+  overflow: hidden;
+  padding: 1.4rem;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.25s ease,
+    padding 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* ─── Teacher list ────────────────────────────────────────────────────────── */
+
+.booking-form__teacher-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.booking-form__teacher-link {
+  align-items: center;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  color: #fff;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.booking-form__teacher-link:hover,
+.booking-form__teacher-link:focus-visible {
+  background: rgba(247, 195, 33, 0.1);
+  border-color: rgba(247, 195, 33, 0.48);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* ─── Actions ─────────────────────────────────────────────────────────────── */
+
+.booking-form__actions {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+}
+
+.booking-form__submit {
+  align-items: center;
+  background: #f7c321;
+  border: none;
+  border-radius: 999px;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+  justify-content: center;
+  letter-spacing: 0.14em;
+  min-height: 56px;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  transition:
+    background-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.booking-form__submit:hover,
+.booking-form__submit:focus-visible {
+  background: #ffd24d;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* ─── Feedback text ───────────────────────────────────────────────────────── */
+
+.booking-form__error,
+.booking-form__success {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.booking-form__error {
+  color: #ffb4a8;
+}
+
+.booking-form__success {
+  color: #f7c321;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .booking-page__section {
+    padding: 6rem 1.25rem 4rem;
+  }
+
+  .booking-form__grid--3col,
+  .booking-form__grid--2col,
+  .booking-form__choice-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-page__section {
+    padding-inline: 1rem;
+  }
+
+  .booking-form {
+    border-radius: 24px;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .booking-form__submit {
+    width: 100%;
+  }
+}

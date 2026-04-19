@@ -1,0 +1,241 @@
+<app-site-shell>
+  <main class="booking-page">
+    <section class="booking-page__section">
+      <h1 class="booking-page__title">Aula Experimental</h1>
+
+      <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- ── Intro ─────────────────────────────────────────────────────── -->
+        <div class="booking-form__intro">
+          <p class="booking-form__kicker">Agendamento</p>
+          <p class="booking-form__lead">
+            Preencha os dados abaixo para solicitar sua aula experimental. O formulário organiza a melhor
+            opção para turma ou aula particular sem poluir a página.
+          </p>
+        </div>
+
+        <!-- ── Dados principais ──────────────────────────────────────────── -->
+        <div class="booking-form__section">
+          <h2 class="booking-form__section-title">Dados principais</h2>
+
+          <div class="booking-form__grid booking-form__grid--3col">
+
+            <div class="booking-form__field">
+              <label class="booking-form__label" for="name">Nome</label>
+              <input
+                class="booking-form__input"
+                id="name"
+                type="text"
+                formControlName="name"
+                autocomplete="given-name"
+              />
+              <p class="booking-form__error" *ngIf="isFieldInvalid('name')">{{ getFieldError('name') }}</p>
+            </div>
+
+            <div class="booking-form__field">
+              <label class="booking-form__label" for="age">Idade</label>
+              <input
+                class="booking-form__input"
+                id="age"
+                type="number"
+                min="1"
+                max="90"
+                formControlName="age"
+              />
+              <p class="booking-form__error" *ngIf="isFieldInvalid('age')">{{ getFieldError('age') }}</p>
+            </div>
+
+            <div class="booking-form__field">
+              <label class="booking-form__label" for="sex">Sexo</label>
+              <select
+                class="booking-form__input booking-form__input--select"
+                id="sex"
+                formControlName="sex"
+              >
+                <option value="">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+              </select>
+              <p class="booking-form__error" *ngIf="isFieldInvalid('sex')">{{ getFieldError('sex') }}</p>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── Informações de contato ────────────────────────────────────── -->
+        <div class="booking-form__section">
+          <h2 class="booking-form__section-title">Informações de contato</h2>
+
+          <div class="booking-form__grid booking-form__grid--2col">
+
+            <div class="booking-form__field">
+              <label class="booking-form__label" for="email">E-mail</label>
+              <input
+                class="booking-form__input"
+                id="email"
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                placeholder="exemplo@email.com"
+              />
+              <p class="booking-form__error" *ngIf="isFieldInvalid('email')">{{ getFieldError('email') }}</p>
+            </div>
+
+            <div class="booking-form__field">
+              <label class="booking-form__label" for="phone">Telefone</label>
+              <input
+                class="booking-form__input"
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                autocomplete="tel"
+                placeholder="(00) 00000-0000"
+              />
+              <p class="booking-form__error" *ngIf="isFieldInvalid('phone')">{{ getFieldError('phone') }}</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Saúde e formato ───────────────────────────────────────────── -->
+        <div class="booking-form__section">
+          <h2 class="booking-form__section-title">Saúde e formato da aula</h2>
+
+          <div class="booking-form__field">
+            <span class="booking-form__label">
+              Possui algum problema de saúde ou condição que exija adaptação no treino?
+            </span>
+            <div class="booking-form__choice-row">
+              <label class="booking-form__choice">
+                <input type="radio" formControlName="hasHealthCondition" value="sim" />
+                <span>Sim</span>
+              </label>
+              <label class="booking-form__choice">
+                <input type="radio" formControlName="hasHealthCondition" value="nao" />
+                <span>Não</span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="booking-form__field"
+            [class.booking-form__field--invisible]="!showHealthDetails"
+            [attr.aria-hidden]="!showHealthDetails"
+          >
+            <label class="booking-form__label" for="healthConditionDetails">Descreva a condição</label>
+            <textarea
+              class="booking-form__input booking-form__textarea"
+              id="healthConditionDetails"
+              rows="4"
+              formControlName="healthConditionDetails"
+            ></textarea>
+            <p class="booking-form__error" *ngIf="isFieldInvalid('healthConditionDetails')">
+              {{ getFieldError('healthConditionDetails') }}
+            </p>
+          </div>
+
+          <div class="booking-form__field">
+            <span class="booking-form__label">Tipo de aula</span>
+            <div class="booking-form__choice-row">
+              <label class="booking-form__choice">
+                <input type="radio" formControlName="lessonType" value="grupo" />
+                <span>Aula experimental em grupo</span>
+              </label>
+              <label class="booking-form__choice">
+                <input type="radio" formControlName="lessonType" value="particular" />
+                <span>Aula particular</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Box: Aula em grupo -->
+          <div
+            class="booking-form__group-box"
+            [class.booking-form__group-box--invisible]="!showGroupBox"
+            [attr.aria-hidden]="!showGroupBox"
+          >
+            <h3 class="booking-form__subsection-title">Aula em grupo</h3>
+
+            <div class="booking-form__grid booking-form__grid--3col">
+              <div class="booking-form__field">
+                <label class="booking-form__label" for="groupDay">Dia da aula</label>
+                <select
+                  class="booking-form__input booking-form__input--select"
+                  id="groupDay"
+                  formControlName="groupDay"
+                >
+                  <option value="">Selecione</option>
+                  <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+                </select>
+                <p class="booking-form__error" *ngIf="isFieldInvalid('groupDay')">{{ getFieldError('groupDay') }}</p>
+              </div>
+
+              <div class="booking-form__field">
+                <label class="booking-form__label" for="groupTime">Horário desejado</label>
+                <select
+                  class="booking-form__input booking-form__input--select"
+                  id="groupTime"
+                  formControlName="groupTime"
+                >
+                  <option value="">Selecione</option>
+                  <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                </select>
+              </div>
+
+              <div class="booking-form__field">
+                <label class="booking-form__label" for="groupTeacher">Professor</label>
+                <select
+                  class="booking-form__input booking-form__input--select"
+                  id="groupTeacher"
+                  formControlName="groupTeacher"
+                >
+                  <option value="">Selecione</option>
+                  <option *ngFor="let teacher of availableTeachers" [value]="teacher">{{ teacher }}</option>
+                </select>
+              </div>
+            </div>
+
+            <p class="booking-form__helper">
+              Escolha o horário ou o professor. O outro campo é ajustado automaticamente conforme a disponibilidade.
+            </p>
+            <p class="booking-form__error" *ngIf="isGroupScheduleInvalid()">
+              Para aula em grupo, selecione o dia e informe pelo menos um horário ou professor.
+            </p>
+          </div>
+
+          <!-- Box: Aula particular -->
+          <div
+            class="booking-form__group-box"
+            [class.booking-form__group-box--invisible]="!showPrivateBox"
+            [attr.aria-hidden]="!showPrivateBox"
+          >
+            <h3 class="booking-form__subsection-title">Aula particular</h3>
+            <p class="booking-form__helper">
+              Para aula particular, fale direto com o professor desejado no WhatsApp para alinhar horário e formato.
+            </p>
+
+            <div class="booking-form__teacher-list">
+              <a
+                class="booking-form__teacher-link"
+                *ngFor="let teacher of privateTeachers"
+                [href]="teacher.whatsappUrl"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Falar com {{ teacher.name }} no WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Actions ───────────────────────────────────────────────────── -->
+        <div class="booking-form__actions">
+          <button class="booking-form__submit" type="submit">Enviar solicitação</button>
+          <p class="booking-form__success" *ngIf="successMessage">{{ successMessage }}</p>
+        </div>
+
+      </form>
+    </section>
+  </main>
+</app-site-shell>

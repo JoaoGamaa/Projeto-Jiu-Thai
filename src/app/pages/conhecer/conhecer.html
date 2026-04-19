@@ -1,0 +1,61 @@
+<app-site-shell>
+  <main class="page">
+    <section class="page__section page__intro">
+      <div class="page__intro-grid">
+        <div class="page__intro-copy">
+          <p class="page__eyebrow">Como chegar</p>
+          <h1 class="page__title">Encontre a Jiu Thai sem perder tempo no caminho</h1>
+          <p class="page__lead">
+            Esta página foi pensada para levar você direto até a academia. A proposta é simples: mostrar o
+            local, facilitar a rota e deixar tudo pronto para quem quer sair de casa já sabendo para onde ir.
+          </p>
+
+          <div class="address-card">
+            <p class="address-card__label">Endereço da academia</p>
+            <h2 class="address-card__title">{{ academyName }}</h2>
+            <p class="address-card__text">{{ academyAddress }}</p>
+            <div class="address-card__actions">
+              <a class="cta-button cta-button--primary" [href]="mapsDirectionsUrl" target="_blank" rel="noreferrer">
+                Abrir rota no Google Maps
+              </a>
+              <!-- Substituir pelo WhatsApp real depois -->
+              <a class="cta-button cta-button--secondary" href="https://wa.me/0000000000000" target="_blank" rel="noreferrer">
+                Falar com a equipe
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-panel">
+          <!-- Substituir por imagem real depois -->
+          <!-- imagem ideal: fachada da academia ou entrada principal -->
+          <img class="photo-panel__image" src="/assets/ImagensConhecer/IMAGEM FACHADA.jpg" alt="Fachada da academia Jiu Thai" />
+        </div>
+      </div>
+    </section>
+
+    <section class="page__section page__section--map" aria-labelledby="mapa-academia">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Google Maps</p>
+        <h2 class="section-heading__title" id="mapa-academia">Mapa da academia</h2>
+        <p class="section-heading__text">
+          O mapa abaixo já aponta para o endereço oficial da academia e serve como base para quem precisa
+          abrir a rota e chegar sem desvio.
+        </p>
+      </div>
+
+      <div class="map-card">
+        <!-- Mapa ideal: localização exata da entrada da academia -->
+        <iframe
+          class="map-card__frame"
+          [src]="mapsEmbedUrl"
+          title="Mapa da localização da academia"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+  </main>
+</app-site-shell>
