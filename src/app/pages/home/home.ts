@@ -43,6 +43,7 @@ export class Home implements AfterViewInit, OnDestroy {
     const video = this.getPlayableVideoElement();
 
     if (video) {
+      video.removeEventListener('loadedmetadata', this.ensureHeroVideoPlayback);
       video.removeEventListener('canplay', this.ensureHeroVideoPlayback);
       video.removeEventListener('loadeddata', this.ensureHeroVideoPlayback);
     }
@@ -105,10 +106,9 @@ export class Home implements AfterViewInit, OnDestroy {
     video.volume = 0;
     video.playsInline = true;
     video.preload = 'auto';
-
-    video.load();
     this.ensureHeroVideoPlayback();
 
+    video.addEventListener('loadedmetadata', this.ensureHeroVideoPlayback);
     video.addEventListener('canplay', this.ensureHeroVideoPlayback);
     video.addEventListener('loadeddata', this.ensureHeroVideoPlayback);
   }
