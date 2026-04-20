@@ -19,7 +19,6 @@
           <h2 class="booking-form__section-title">Dados principais</h2>
 
           <div class="booking-form__grid booking-form__grid--3col">
-
             <div class="booking-form__field">
               <label class="booking-form__label" for="name">Nome</label>
               <input
@@ -47,28 +46,21 @@
 
             <div class="booking-form__field">
               <label class="booking-form__label" for="sex">Sexo</label>
-              <select
-                class="booking-form__input booking-form__input--select"
-                id="sex"
-                formControlName="sex"
-              >
+              <select class="booking-form__input booking-form__input--select" id="sex" formControlName="sex">
                 <option value="">Selecione</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Feminino">Feminino</option>
               </select>
               <p class="booking-form__error" *ngIf="isFieldInvalid('sex')">{{ getFieldError('sex') }}</p>
             </div>
-
           </div>
         </div>
-
 
         <!-- ── Informações de contato ────────────────────────────────────── -->
         <div class="booking-form__section">
           <h2 class="booking-form__section-title">Informações de contato</h2>
 
           <div class="booking-form__grid booking-form__grid--2col">
-
             <div class="booking-form__field">
               <label class="booking-form__label" for="email">E-mail</label>
               <input
@@ -94,7 +86,6 @@
               />
               <p class="booking-form__error" *ngIf="isFieldInvalid('phone')">{{ getFieldError('phone') }}</p>
             </div>
-
           </div>
         </div>
 
@@ -102,6 +93,7 @@
         <div class="booking-form__section">
           <h2 class="booking-form__section-title">Saúde e formato da aula</h2>
 
+          <!-- Condição de saúde -->
           <div class="booking-form__field">
             <span class="booking-form__label">
               Possui algum problema de saúde ou condição que exija adaptação no treino?
@@ -118,6 +110,7 @@
             </div>
           </div>
 
+          <!-- Detalhes saúde: sempre no DOM, oculto via CSS -->
           <div
             class="booking-form__field"
             [class.booking-form__field--invisible]="!showHealthDetails"
@@ -135,6 +128,7 @@
             </p>
           </div>
 
+          <!-- Tipo de aula -->
           <div class="booking-form__field">
             <span class="booking-form__label">Tipo de aula</span>
             <div class="booking-form__choice-row">
@@ -149,7 +143,7 @@
             </div>
           </div>
 
-          <!-- Box: Aula em grupo -->
+          <!-- ── Box: Aula em grupo ───────────────────────────────────────── -->
           <div
             class="booking-form__group-box"
             [class.booking-form__group-box--invisible]="!showGroupBox"
@@ -157,29 +151,59 @@
           >
             <h3 class="booking-form__subsection-title">Aula em grupo</h3>
 
-            <div class="booking-form__grid booking-form__grid--3col">
-              <div class="booking-form__field">
-                <label class="booking-form__label" for="groupDay">Dia da aula</label>
-                <select
-                  class="booking-form__input booking-form__input--select"
-                  id="groupDay"
-                  formControlName="groupDay"
-                >
-                  <option value="">Selecione</option>
-                  <option *ngFor="let day of days" [value]="day">{{ day }}</option>
-                </select>
-                <p class="booking-form__error" *ngIf="isFieldInvalid('groupDay')">{{ getFieldError('groupDay') }}</p>
+            <!-- 1. Modalidade -->
+            <div class="booking-form__field">
+              <span class="booking-form__label">Modalidade</span>
+              <div class="booking-form__choice-row booking-form__choice-row--3col">
+                <label class="booking-form__choice" *ngFor="let mod of modalities">
+                  <input type="radio" formControlName="groupModality" [value]="mod.value" />
+                  <span>{{ mod.label }}</span>
+                </label>
               </div>
+              <p class="booking-form__error" *ngIf="isFieldInvalid('groupModality')">
+                {{ getFieldError('groupModality') }}
+              </p>
+            </div>
 
+            <!-- 2. Dia -->
+            <div
+              class="booking-form__field"
+              [class.booking-form__field--invisible]="!availableDays.length"
+              [attr.aria-hidden]="!availableDays.length"
+            >
+              <label class="booking-form__label" for="groupDay">Dia</label>
+              <select
+                class="booking-form__input booking-form__input--select"
+                id="groupDay"
+                formControlName="groupDay"
+              >
+                <option value="">Selecione</option>
+                <option *ngFor="let day of availableDays" [value]="day">
+                  {{ day }}
+                </option>
+              </select>
+              <p class="booking-form__error" *ngIf="isFieldInvalid('groupDay')">
+                {{ getFieldError('groupDay') }}
+              </p>
+            </div>
+
+            <!-- 3. Horário ou professor -->
+            <div
+              class="booking-form__grid booking-form__grid--2col"
+              [class.booking-form__field--invisible]="!availableTimes.length && !availableTeachers.length"
+              [attr.aria-hidden]="!availableTimes.length && !availableTeachers.length"
+            >
               <div class="booking-form__field">
-                <label class="booking-form__label" for="groupTime">Horário desejado</label>
+                <label class="booking-form__label" for="groupTime">Horário</label>
                 <select
                   class="booking-form__input booking-form__input--select"
                   id="groupTime"
                   formControlName="groupTime"
                 >
                   <option value="">Selecione</option>
-                  <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                  <option *ngFor="let time of availableTimes" [value]="time">
+                    {{ time }}
+                  </option>
                 </select>
               </div>
 
@@ -191,20 +215,35 @@
                   formControlName="groupTeacher"
                 >
                   <option value="">Selecione</option>
-                  <option *ngFor="let teacher of availableTeachers" [value]="teacher">{{ teacher }}</option>
+                  <option *ngFor="let teacher of availableTeachers" [value]="teacher">
+                    {{ teacher }}
+                  </option>
                 </select>
               </div>
             </div>
 
-            <p class="booking-form__helper">
-              Escolha o horário ou o professor. O outro campo é ajustado automaticamente conforme a disponibilidade.
-            </p>
+            <!-- 4. Resumo da combinação selecionada -->
+            <div class="booking-form__slot-summary" *ngIf="selectedSchedule">
+              <div class="booking-form__slot-row">
+                <span class="booking-form__slot-label">Dia</span>
+                <span class="booking-form__slot-value">{{ selectedSchedule.day }}</span>
+              </div>
+              <div class="booking-form__slot-row">
+                <span class="booking-form__slot-label">Horário</span>
+                <span class="booking-form__slot-value">{{ selectedSchedule.time }}</span>
+              </div>
+              <div class="booking-form__slot-row">
+                <span class="booking-form__slot-label">Professor</span>
+                <span class="booking-form__slot-value">{{ selectedSchedule.teacher }}</span>
+              </div>
+            </div>
+
             <p class="booking-form__error" *ngIf="isGroupScheduleInvalid()">
-              Para aula em grupo, selecione o dia e informe pelo menos um horário ou professor.
+              Selecione a modalidade, o dia e informe um horário ou professor para continuar.
             </p>
           </div>
 
-          <!-- Box: Aula particular -->
+          <!-- ── Box: Aula particular ─────────────────────────────────────── -->
           <div
             class="booking-form__group-box"
             [class.booking-form__group-box--invisible]="!showPrivateBox"

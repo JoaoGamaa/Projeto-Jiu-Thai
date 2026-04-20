@@ -11,34 +11,34 @@ import { SiteShell } from '../../components/site-shell/site-shell';
 export class Professores {
   protected readonly professors = [
     {
-      name: 'Igor',
+      name: 'IGOR, "GORILA"',
       image: '/assets/ImagensProfessores/PROFESSOR 1 - IGOR.jpg',
       description:
         'Professor com condução firme e leitura técnica precisa. Seu trabalho em aula reforça base sólida, intensidade controlada e evolução contínua para quem quer treinar com seriedade.',
     },
     {
-      name: 'Iago',
+      name: 'IAGO, "EL MATADOR"',
       image: '/assets/ImagensProfessores/PROFESSOR 2 - IAGO.jpg',
       description:
         'Professor focado em ritmo de treino, correção de detalhes e construção de confiança. Sua metodologia equilibra disciplina, clareza e exigência dentro de um ambiente forte.',
     },
     {
-      name: 'Luis',
-      image: '/assets/placeholder.svg',
+      name: 'THIAGO, "O LÍDER"',
+      image: '/assets/ImagensProfessores/PROFESSOR 3 - THIAGO.jpg',
       description:
         'Professor com perfil técnico e abordagem direta. Em aula, prioriza execução limpa, constância e desenvolvimento progressivo para alunos que buscam crescimento real.',
     },
     {
-      name: 'Thiago',
-      image: '/assets/placeholder.svg',
+      name: 'LUIS, "O NERD"',
+      image: '/assets/ImagensProfessores/PROFESSOR 4 - LUIS.jpg',
       description:
-        'Professor que imprime identidade, presença e alto padrão no treino. Sua condução valoriza cultura de equipe, respeito à arte e desempenho consistente em cada sessão.',
+        'Professor que pode assediar alunas,pois esta doido querendo provar o mel.',
     },
     {
-      name: 'Professor 05',
-      image: '/assets/placeholder.svg',
+      name: 'JHON, "BLACK BELT"',
+      image: '/assets/ImagensProfessores/PROFESSOR 5 - JHON.jpg',
       description:
-        'Espaço reservado para apresentar mais um nome da equipe. O bloco já está pronto para receber o perfil, a imagem e a proposta técnica do professor depois.',
+        'Professor com vasta experiência e liderança natural. Sua abordagem inspira confiança e motivação, promovendo um ambiente de treino positivo e produtivo.',
     },
   ];
 }
