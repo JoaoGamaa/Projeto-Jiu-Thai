@@ -1,40 +1,82 @@
-<header class="topbar">
-  <div class="topbar__inner">
-    <nav class="topbar__group topbar__group--left" aria-label="Top bar links left">
-      <a class="topbar__link" routerLink="/conhecer">JT Loja</a>
-      <a class="topbar__link" routerLink="/reservar-aula">JT EVENTOS</a>
-    </nav>
+<header
+  class="site-header"
+  [class.site-header--hidden]="isHeaderHidden"
+  [class.site-header--home]="isHomeRoute"
+  [class.site-header--internal]="!isHomeRoute"
+  [class.site-header--scrolled]="isNavScrolled"
+>
+  <div #topbar class="topbar">
+    <div class="topbar__inner">
+      <nav class="topbar__group topbar__group--left" aria-label="Top bar links left">
+        <a class="topbar__link" routerLink="/conhecer" (click)="closeMobileMenu()">JT Loja</a>
+        <a class="topbar__link" routerLink="/reservar-aula" (click)="closeMobileMenu()">JT EVENTOS</a>
+      </nav>
+    </div>
+  </div>
+
+  <nav #mainNav class="main-nav" aria-label="Navegacao principal">
+    <div class="main-nav__inner">
+      <a class="main-nav__brand" routerLink="/" aria-label="Pagina inicial" (click)="closeMobileMenu()">
+        <span class="main-nav__logo-frame">
+          <img class="main-nav__logo" src="/assets/ImagensVideoHome/LOGO.svg" alt="Logo Jiu Thai" />
+        </span>
+      </a>
+
+      <div class="main-nav__menu" role="menubar" aria-label="Menu principal">
+        <a class="main-nav__link" routerLink="/sobre" role="menuitem" (click)="closeMobileMenu()">Sobre nós</a>
+        <a class="main-nav__link" routerLink="/porque-jiu-thai" role="menuitem" (click)="closeMobileMenu()">Por que Jiu Thai</a>
+        <a class="main-nav__link" routerLink="/aulas" role="menuitem" (click)="closeMobileMenu()">Aulas</a>
+      </div>
+
+      <div class="main-nav__actions">
+        <a class="main-nav__button main-nav__button--secondary" routerLink="/conhecer" (click)="closeMobileMenu()">Conhecer</a>
+        <a class="main-nav__button main-nav__button--primary" routerLink="/contato" (click)="closeMobileMenu()">Contato</a>
+      </div>
+
+      <button
+        class="main-nav__toggle"
+        type="button"
+        [attr.aria-expanded]="isMobileMenuOpen"
+        aria-controls="mobile-nav-panel"
+        aria-label="Abrir menu principal"
+        (click)="toggleMobileMenu()"
+      >
+        <span class="main-nav__toggle-line"></span>
+        <span class="main-nav__toggle-line"></span>
+        <span class="main-nav__toggle-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="mobile-nav-panel"
+    class="mobile-nav"
+    [class.mobile-nav--open]="isMobileMenuOpen"
+    [attr.aria-hidden]="!isMobileMenuOpen"
+  >
+    <div class="mobile-nav__group" aria-label="Menu mobile">
+      <a class="mobile-nav__link" routerLink="/sobre" (click)="closeMobileMenu()">Sobre nós</a>
+      <a class="mobile-nav__link" routerLink="/porque-jiu-thai" (click)="closeMobileMenu()">Por que Jiu Thai</a>
+      <a class="mobile-nav__link" routerLink="/aulas" (click)="closeMobileMenu()">Aulas</a>
+      <a class="mobile-nav__link" routerLink="/professores" (click)="closeMobileMenu()">Professores</a>
+      <a class="mobile-nav__link" routerLink="/jiu-jitsu" (click)="closeMobileMenu()">Jiu Jitsu</a>
+      <a class="mobile-nav__link" routerLink="/muay-thai" (click)="closeMobileMenu()">Muay Thai</a>
+    </div>
+
+    <div class="mobile-nav__actions">
+      <a class="main-nav__button main-nav__button--secondary" routerLink="/conhecer" (click)="closeMobileMenu()">Conhecer</a>
+      <a class="main-nav__button main-nav__button--primary" routerLink="/contato" (click)="closeMobileMenu()">Contato</a>
+    </div>
   </div>
 </header>
 
-<nav
-  class="main-nav"
-  [class.nav-hidden]="isNavHidden"
-  [class.main-nav--pinned]="isNavPinnedToTop"
-  [class.main-nav--scrolled]="isNavScrolled"
-  aria-label="Navegacao principal"
+<div
+  class="site-shell__content"
+  [class.site-shell__content--internal]="!isHomeRoute"
+  [style.padding-top.px]="isHomeRoute ? 0 : headerOffset"
 >
-  <div class="main-nav__inner">
-    <a class="main-nav__brand" routerLink="/" aria-label="Pagina inicial">
-      <span class="main-nav__logo-frame">
-        <img class="main-nav__logo" src="/assets/ImagensVideoHome/LOGO.svg" alt="Logo Jiu Thai" />
-      </span>
-    </a>
-
-    <div class="main-nav__menu" role="menubar" aria-label="Menu principal">
-      <a class="main-nav__link" routerLink="/sobre" role="menuitem">Sobre nós</a>
-      <a class="main-nav__link" routerLink="/porque-jiu-thai" role="menuitem">Por que Jiu Thai</a>
-      <a class="main-nav__link" routerLink="/aulas" role="menuitem">Aulas</a>
-    </div>
-
-    <div class="main-nav__actions">
-      <a class="main-nav__button main-nav__button--secondary" routerLink="/conhecer">Conhecer</a>
-      <a class="main-nav__button main-nav__button--primary" routerLink="/contato">Contato</a>
-    </div>
-  </div>
-</nav>
-
-<ng-content></ng-content>
+  <ng-content></ng-content>
+</div>
 
 <footer class="rodape" aria-labelledby="rodape-titulo">
   <div class="rodape__inner">

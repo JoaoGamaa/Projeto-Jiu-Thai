@@ -270,9 +270,12 @@
 }
 
 .hero__video {
+  backface-visibility: hidden;
   height: 100%;
+  image-rendering: auto;
   object-position: center;
   object-fit: cover;
+  transform: translateZ(0);
   width: 100%;
 }
 
@@ -889,6 +892,15 @@
     padding-top: 14rem;
   }
 
+  .hero__media {
+    inset: 0 -6%;
+  }
+
+  .hero__video {
+    object-position: 58% center;
+    transform: translateZ(0) scale(1.04);
+  }
+
   .hero__content {
     padding: 3.5rem 1.25rem 4.5rem;
     width: min(100%, 640px);
@@ -962,7 +974,7 @@
   .quote-banner::before {
     background:
       linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 45%),
-      url("/assets/ImagensVideoHome/IMAGEM - SITACAO.svg") center left 35%/cover no-repeat;
+      url("/assets/ImagensVideoHome/IMAGEM - SITACAO.svg") center 42%/contain no-repeat;
   }
 
   .quote-banner__card {
@@ -1009,6 +1021,15 @@
   .hero {
     min-height: 100svh;
     padding-top: 15rem;
+  }
+
+  .hero__media {
+    inset: 0 -10%;
+  }
+
+  .hero__video {
+    object-position: 61% center;
+    transform: translateZ(0) scale(1.08);
   }
 
   .hero__eyebrow {
@@ -1090,7 +1111,14 @@
   }
 
   .quote-banner {
+    min-height: 30rem;
     padding: 4rem 1rem;
+  }
+
+  .quote-banner::before {
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 45%),
+      url("/assets/ImagensVideoHome/IMAGEM - SITACAO.svg") center 48%/auto 100% no-repeat;
   }
 
   .quote-banner__card {
@@ -1128,6 +1156,10 @@
 
   .hero {
     padding-top: 14.5rem;
+  }
+
+  .hero__video {
+    object-position: 63% center;
   }
 
   .muaythai-section__inner,
