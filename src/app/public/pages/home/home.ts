@@ -40,6 +40,10 @@ export class Home implements AfterViewInit, OnDestroy {
       video.removeEventListener('loadedmetadata', this.ensureHeroVideoPlayback);
       video.removeEventListener('canplay', this.ensureHeroVideoPlayback);
       video.removeEventListener('loadeddata', this.ensureHeroVideoPlayback);
+      video.removeEventListener('pause', this.handleHeroVideoInterruption);
+      video.removeEventListener('ended', this.handleHeroVideoInterruption);
+      video.removeEventListener('stalled', this.handleHeroVideoInterruption);
+      video.removeEventListener('suspend', this.handleHeroVideoInterruption);
     }
 
     if (this.retryPlayTimeoutId) {
@@ -64,14 +68,25 @@ export class Home implements AfterViewInit, OnDestroy {
 
     video.muted = true;
     video.defaultMuted = true;
+    video.autoplay = true;
+    video.loop = true;
     video.volume = 0;
     video.playsInline = true;
     video.preload = 'auto';
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('loop', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
     this.ensureHeroVideoPlayback();
 
     video.addEventListener('loadedmetadata', this.ensureHeroVideoPlayback);
     video.addEventListener('canplay', this.ensureHeroVideoPlayback);
     video.addEventListener('loadeddata', this.ensureHeroVideoPlayback);
+    video.addEventListener('pause', this.handleHeroVideoInterruption);
+    video.addEventListener('ended', this.handleHeroVideoInterruption);
+    video.addEventListener('stalled', this.handleHeroVideoInterruption);
+    video.addEventListener('suspend', this.handleHeroVideoInterruption);
   }
 
   private ensureHeroVideoPlayback = (): void => {
@@ -92,16 +107,38 @@ export class Home implements AfterViewInit, OnDestroy {
     }
 
     playAttempt.catch(() => {
-      if (this.retryPlayTimeoutId) {
-        clearTimeout(this.retryPlayTimeoutId);
-      }
-
-      this.retryPlayTimeoutId = setTimeout(() => {
-        this.retryPlayTimeoutId = null;
-        this.ensureHeroVideoPlayback();
-      }, 300);
+      this.scheduleHeroVideoRetry();
     });
   };
+
+  private handleHeroVideoInterruption = (): void => {
+    const video = this.getPlayableVideoElement();
+
+    if (!video || !isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    video.loop = true;
+
+    if (video.ended) {
+      video.currentTime = 0;
+    }
+
+    if (document.visibilityState === 'visible') {
+      this.scheduleHeroVideoRetry();
+    }
+  };
+
+  private scheduleHeroVideoRetry(): void {
+    if (this.retryPlayTimeoutId) {
+      clearTimeout(this.retryPlayTimeoutId);
+    }
+
+    this.retryPlayTimeoutId = setTimeout(() => {
+      this.retryPlayTimeoutId = null;
+      this.ensureHeroVideoPlayback();
+    }, 250);
+  }
 
   private getPlayableVideoElement(): HTMLVideoElement | null {
     if (!isPlatformBrowser(this.platformId)) {
