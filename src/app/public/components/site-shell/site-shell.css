@@ -592,9 +592,11 @@
 
   .main-nav__inner {
     column-gap: 1rem;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr;
+    justify-items: center;
     min-height: 96px;
     padding: 0.75rem 1rem;
+    position: relative;
   }
 
   .main-nav__menu {
@@ -610,7 +612,7 @@
   }
 
   .main-nav__brand {
-    justify-self: start;
+    justify-self: center;
   }
 
   .main-nav__logo-frame {
@@ -620,6 +622,10 @@
 
   .main-nav__toggle {
     display: inline-flex;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .mobile-nav {
