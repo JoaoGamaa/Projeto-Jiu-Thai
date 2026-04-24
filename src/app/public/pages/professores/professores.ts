@@ -11,31 +11,31 @@ import { SiteShell } from '../../components/site-shell/site-shell';
 export class Professores {
   protected readonly professors = [
     {
-      name: 'IGOR, "GORILA"',
+      name: 'IGOR',
       image: '/assets/ImagensProfessores/PROFESSOR 1 - IGOR.jpg',
       description:
         'Professor com condução firme e leitura técnica precisa. Seu trabalho em aula reforça base sólida, intensidade controlada e evolução contínua para quem quer treinar com seriedade.',
     },
     {
-      name: 'IAGO, "EL MATADOR"',
+      name: 'IAGO',
       image: '/assets/ImagensProfessores/PROFESSOR 2 - IAGO.jpg',
       description:
         'Professor focado em ritmo de treino, correção de detalhes e construção de confiança. Sua metodologia equilibra disciplina, clareza e exigência dentro de um ambiente forte.',
     },
     {
-      name: 'THIAGO, "O LÍDER"',
+      name: 'THIAGO',
       image: '/assets/ImagensProfessores/PROFESSOR 3 - THIAGO.jpg',
       description:
         'Professor com perfil técnico e abordagem direta. Em aula, prioriza execução limpa, constância e desenvolvimento progressivo para alunos que buscam crescimento real.',
     },
     {
-      name: 'LUIS, "O NERD"',
+      name: 'LUIS',
       image: '/assets/ImagensProfessores/PROFESSOR 4 - LUIS.jpg',
       description:
-        'Professor que pode assediar alunas,pois esta doido querendo provar o mel.',
+        'Professor com condução firme e leitura técnica precisa. Seu trabalho em aula reforça base sólida, intensidade controlada e evolução contínua para quem quer treinar com seriedade.',
     },
     {
-      name: 'JHON, "BLACK BELT"',
+      name: 'JHON',
       image: '/assets/ImagensProfessores/PROFESSOR 5 - JHON.jpg',
       description:
         'Professor com vasta experiência e liderança natural. Sua abordagem inspira confiança e motivação, promovendo um ambiente de treino positivo e produtivo.',
