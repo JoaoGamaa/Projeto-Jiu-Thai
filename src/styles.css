@@ -38,8 +38,26 @@
   font-display: swap;
 }
 
-html,
-body {
+html, body {
+  background: 
+    radial-gradient(ellipse 60% 40% at 0% 0%, rgba(247, 195, 33, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #080808 0%, #111111 100%);
   margin: 0;
   padding: 0;
 }
+
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+app-root {
+  background-color: #080808;
+  display: block;
+  min-height: 100vh;
+}
+

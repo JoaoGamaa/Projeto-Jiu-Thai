@@ -1,63 +1,123 @@
 <app-site-shell>
   <main class="contact-page">
     <section class="contact-page__section">
-      <h1 class="contact-page__title">Contato</h1>
+
+      <header class="contact-page__header">
+        <p class="contact-page__eyebrow">Fale com a gente</p>
+        <h1 class="contact-page__title">Contato</h1>
+      </header>
 
       <div class="contact-layout">
+
+        <!-- ── Informações de contato ──────────────────────────── -->
         <aside class="contact-info" aria-label="Informações de contato">
           <div class="contact-info__item">
             <p class="contact-info__label">WhatsApp</p>
-            <a class="contact-info__value contact-info__value--link" [href]="whatsappUrl" target="_blank" rel="noreferrer">
+            <a
+              class="contact-info__value contact-info__value--link"
+              [href]="whatsappUrl"
+              target="_blank"
+              rel="noreferrer"
+            >
               {{ whatsappLabel }}
             </a>
           </div>
 
           <div class="contact-info__item">
             <p class="contact-info__label">E-mail</p>
-            <a class="contact-info__value contact-info__value--link" [href]="'mailto:' + emailAddress">
+            <a
+              class="contact-info__value contact-info__value--link"
+              [href]="'mailto:' + emailAddress"
+            >
               {{ emailAddress }}
             </a>
           </div>
 
           <div class="contact-info__item">
             <p class="contact-info__label">Horário de atendimento</p>
-            <p class="contact-info__value">Segunda a Sexta, das 8h às 20h</p>
+            <p class="contact-info__value">Seg – Sex, das 8h às 20h</p>
           </div>
         </aside>
 
+        <!-- ── Formulário ──────────────────────────────────────── -->
         <section class="contact-form-card" aria-labelledby="contact-form-title">
           <h2 class="contact-form-card__title" id="contact-form-title">Fale Conosco</h2>
 
-          <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
-            <div class="contact-form__field">
-              <label class="contact-form__label" for="contact-name">Nome</label>
-              <input class="contact-form__input" id="contact-name" type="text" formControlName="name" />
-              <p class="contact-form__error" *ngIf="isFieldInvalid('name')">{{ getFieldError('name') }}</p>
+          <form
+            class="contact-form"
+            [formGroup]="contactForm"
+            (ngSubmit)="onSubmit()"
+            novalidate
+          >
+            <!-- Nome + E-mail em linha -->
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <label class="contact-form__label" for="contact-name">Nome</label>
+                <input
+                  class="contact-form__input"
+                  [class.contact-form__input--error]="isFieldInvalid('name')"
+                  id="contact-name"
+                  type="text"
+                  formControlName="name"
+                  autocomplete="name"
+                  aria-describedby="contact-name-error"
+                />
+                <p
+                  class="contact-form__error"
+                  id="contact-name-error"
+                  *ngIf="isFieldInvalid('name')"
+                  role="alert"
+                >{{ getFieldError('name') }}</p>
+              </div>
+
+              <div class="contact-form__field">
+                <label class="contact-form__label" for="contact-email">E-mail</label>
+                <input
+                  class="contact-form__input"
+                  [class.contact-form__input--error]="isFieldInvalid('email')"
+                  id="contact-email"
+                  type="email"
+                  formControlName="email"
+                  autocomplete="email"
+                  aria-describedby="contact-email-error"
+                />
+                <p
+                  class="contact-form__error"
+                  id="contact-email-error"
+                  *ngIf="isFieldInvalid('email')"
+                  role="alert"
+                >{{ getFieldError('email') }}</p>
+              </div>
             </div>
 
-            <div class="contact-form__field">
-              <label class="contact-form__label" for="contact-email">E-mail</label>
-              <input class="contact-form__input" id="contact-email" type="email" formControlName="email" />
-              <p class="contact-form__error" *ngIf="isFieldInvalid('email')">{{ getFieldError('email') }}</p>
-            </div>
-
+            <!-- Mensagem -->
             <div class="contact-form__field">
               <label class="contact-form__label" for="contact-message">Mensagem</label>
               <textarea
                 class="contact-form__input contact-form__textarea"
+                [class.contact-form__input--error]="isFieldInvalid('message')"
                 id="contact-message"
                 rows="6"
                 formControlName="message"
+                aria-describedby="contact-message-error"
               ></textarea>
-              <p class="contact-form__error" *ngIf="isFieldInvalid('message')">{{ getFieldError('message') }}</p>
+              <p
+                class="contact-form__error"
+                id="contact-message-error"
+                *ngIf="isFieldInvalid('message')"
+                role="alert"
+              >{{ getFieldError('message') }}</p>
             </div>
 
+            <!-- Ações -->
             <div class="contact-form__actions">
-              <button class="contact-form__button contact-form__button--primary" type="submit">
+              <button
+                class="contact-form__button contact-form__button--primary"
+                type="submit"
+              >
                 Enviar por e-mail
               </button>
 
-              <!-- Substituir o link placeholder pelo WhatsApp real depois -->
               <a
                 class="contact-form__button contact-form__button--secondary"
                 [href]="whatsappUrl"
@@ -69,6 +129,7 @@
             </div>
           </form>
         </section>
+
       </div>
     </section>
   </main>
