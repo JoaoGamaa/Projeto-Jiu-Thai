@@ -24,6 +24,8 @@ export class Home implements AfterViewInit, OnDestroy {
   @ViewChild('heroVideo') private heroVideoRef?: ElementRef<HTMLVideoElement>;
 
   private retryPlayTimeoutId: ReturnType<typeof setTimeout> | null = null;
+  private retryPlayAttempts = 0;
+  private readonly maxRetryPlayAttempts = 8;
 
   public ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -44,6 +46,12 @@ export class Home implements AfterViewInit, OnDestroy {
       video.removeEventListener('ended', this.handleHeroVideoInterruption);
       video.removeEventListener('stalled', this.handleHeroVideoInterruption);
       video.removeEventListener('suspend', this.handleHeroVideoInterruption);
+    }
+
+    if (isPlatformBrowser(this.platformId)) {
+      document.removeEventListener('touchstart', this.ensureHeroVideoPlayback);
+      document.removeEventListener('pointerdown', this.ensureHeroVideoPlayback);
+      window.removeEventListener('scroll', this.ensureHeroVideoPlayback);
     }
 
     if (this.retryPlayTimeoutId) {
@@ -77,8 +85,9 @@ export class Home implements AfterViewInit, OnDestroy {
     video.setAttribute('autoplay', '');
     video.setAttribute('loop', '');
     video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', 'true');
-    this.ensureHeroVideoPlayback();
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('disablepictureinpicture', '');
+    video.setAttribute('controlslist', 'nodownload noplaybackrate noremoteplayback');
 
     video.addEventListener('loadedmetadata', this.ensureHeroVideoPlayback);
     video.addEventListener('canplay', this.ensureHeroVideoPlayback);
@@ -87,6 +96,13 @@ export class Home implements AfterViewInit, OnDestroy {
     video.addEventListener('ended', this.handleHeroVideoInterruption);
     video.addEventListener('stalled', this.handleHeroVideoInterruption);
     video.addEventListener('suspend', this.handleHeroVideoInterruption);
+
+    document.addEventListener('touchstart', this.ensureHeroVideoPlayback, { passive: true });
+    document.addEventListener('pointerdown', this.ensureHeroVideoPlayback, { passive: true });
+    window.addEventListener('scroll', this.ensureHeroVideoPlayback, { passive: true });
+
+    video.load();
+    requestAnimationFrame(this.ensureHeroVideoPlayback);
   }
 
   private ensureHeroVideoPlayback = (): void => {
@@ -99,6 +115,9 @@ export class Home implements AfterViewInit, OnDestroy {
     video.muted = true;
     video.defaultMuted = true;
     video.volume = 0;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
 
     const playAttempt = video.play();
 
@@ -106,9 +125,13 @@ export class Home implements AfterViewInit, OnDestroy {
       return;
     }
 
-    playAttempt.catch(() => {
-      this.scheduleHeroVideoRetry();
-    });
+    playAttempt
+      .then(() => {
+        this.retryPlayAttempts = 0;
+      })
+      .catch(() => {
+        this.scheduleHeroVideoRetry();
+      });
   };
 
   private handleHeroVideoInterruption = (): void => {
@@ -130,6 +153,12 @@ export class Home implements AfterViewInit, OnDestroy {
   };
 
   private scheduleHeroVideoRetry(): void {
+    if (this.retryPlayAttempts >= this.maxRetryPlayAttempts) {
+      return;
+    }
+
+    this.retryPlayAttempts += 1;
+
     if (this.retryPlayTimeoutId) {
       clearTimeout(this.retryPlayTimeoutId);
     }
@@ -137,7 +166,7 @@ export class Home implements AfterViewInit, OnDestroy {
     this.retryPlayTimeoutId = setTimeout(() => {
       this.retryPlayTimeoutId = null;
       this.ensureHeroVideoPlayback();
-    }, 250);
+    }, 300);
   }
 
   private getPlayableVideoElement(): HTMLVideoElement | null {

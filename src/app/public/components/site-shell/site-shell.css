@@ -4,8 +4,7 @@
   overflow-x: hidden;
 }
 
-/* Cobre a área acima da viewport com o mesmo gradiente da página,
-   evitando a faixa diferente quando a navbar some */
+
 :host::before {
   background:
     radial-gradient(ellipse 60% 40% at 0% 0%, rgba(247, 195, 33, 0.18) 0%, transparent 60%),
