@@ -67,11 +67,11 @@ export class ReservarAula implements OnInit, OnDestroy {
   ];
 
   protected readonly privateTeachers = [
-    { name: 'Igor',       whatsappUrl: 'https://wa.me/0000000000000' },
-    { name: 'Iago',       whatsappUrl: 'https://wa.me/0000000000000' },
-    { name: 'Luis',       whatsappUrl: 'https://wa.me/0000000000000' },
-    { name: 'Thiago',     whatsappUrl: 'https://wa.me/0000000000000' },
-    { name: 'John Veiga', whatsappUrl: 'https://wa.me/0000000000000' },
+    { name: 'Igor',       whatsappUrl: 'https://wa.me/5577991248244' },
+    { name: 'Iago',       whatsappUrl: 'https://wa.me/5577991248244' },
+    { name: 'Luis',       whatsappUrl: 'https://wa.me/5577991248244' },
+    { name: 'Thiago',     whatsappUrl: 'https://wa.me/5577991248244' },
+    { name: 'John Veiga', whatsappUrl: 'https://wa.me/5577991248244' },
   ];
 
   protected submitAttempted = false;

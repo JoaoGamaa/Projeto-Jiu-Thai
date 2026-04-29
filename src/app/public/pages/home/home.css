@@ -388,6 +388,8 @@
 .muaythai-section {
   background: #f7c321;
   color: #fff;
+  overflow: hidden;
+  position: relative;
   width: 100%;
 }
 
@@ -395,6 +397,29 @@
   margin: 0 auto;
   max-width: 1240px;
   padding: 7rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.muaythai-section__logo-bg {
+  height: 80%;
+  left: 95%;
+  max-width: none;
+  opacity: 0.15;
+  pointer-events: none;
+  position: absolute;
+  top: 71%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  width: min(72vw, 780px);
+  z-index: 0;
+}
+
+.muaythai-section__title,
+.muaythai-section__grid,
+.muaythai-section .modality-link {
+  position: relative;
+  z-index: 1;
 }
 
 .muaythai-section__title {
@@ -494,6 +519,8 @@
 .jiujitsu-section {
   background: #f7c321;
   color: #fff;
+  overflow: hidden;
+  position: relative;
   width: 100%;
 }
 
@@ -501,6 +528,29 @@
   margin: 0 auto;
   max-width: 1240px;
   padding: 7rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.jiujitsu-section__logo-bg {
+  height: 80%;
+  left: 5%;
+  max-width: none;
+  opacity: 0.15;
+  pointer-events: none;
+  position: absolute;
+  top: 71%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  width: min(72vw, 780px);
+  z-index: 0;
+}
+
+.jiujitsu-section__title,
+.jiujitsu-section__grid,
+.jiujitsu-section .modality-link {
+  position: relative;
+  z-index: 1;
 }
 
 .jiujitsu-section__title {
@@ -769,9 +819,9 @@
 
 .quote-banner__text {
   color: #111;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
   font-size: clamp(1.3rem, 2.5vw, 1.95rem);
-  font-style: normal;
+  font-style: italic;
   font-weight: 500;
   letter-spacing: 0.01em;
   line-height: 1.7;
@@ -781,6 +831,7 @@
 .quote-banner__signature {
   color: rgba(17, 17, 17, 0.74);
   font-family: 'Montserrat', sans-serif;
+  font-style: bold;
   font-size: 0.96rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -945,6 +996,7 @@
   .jiujitsu-section__inner {
     padding: 5rem 1.25rem;
   }
+
 
   .jiujitsu-section__grid {
     flex-direction: column;

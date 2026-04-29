@@ -28,12 +28,12 @@ export class Professores {
       description:
         'Professor com perfil técnico e abordagem direta. Em aula, prioriza execução limpa, constância e desenvolvimento progressivo para alunos que buscam crescimento real.',
     },
-    {
-      name: 'LUIS',
-      image: '/assets/ImagensProfessores/PROFESSOR 4 - LUIS.jpg',
-      description:
-        'Professor com condução firme e leitura técnica precisa. Seu trabalho em aula reforça base sólida, intensidade controlada e evolução contínua para quem quer treinar com seriedade.',
-    },
+    // {
+    //   name: 'LUIS',
+    //   image: '/assets/ImagensProfessores/PROFESSOR 4 - LUIS.jpg',
+    //   description:
+    //     'Professor com condução firme e leitura técnica precisa. Seu trabalho em aula reforça base sólida, intensidade controlada e evolução contínua para quem quer treinar com seriedade.',
+    // },
     {
       name: 'JHON',
       image: '/assets/ImagensProfessores/PROFESSOR 5 - JHON.jpg',

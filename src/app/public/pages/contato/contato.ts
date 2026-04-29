@@ -10,8 +10,8 @@ import { SiteShell } from '../../components/site-shell/site-shell';
   styleUrl: './contato.css',
 })
 export class Contato {
-  protected readonly whatsappLabel = '(77) 99999-9999';
-  protected readonly whatsappUrl = 'https://wa.me/0000000000000';
+  protected readonly whatsappLabel = '(77) 99124-8244';
+  protected readonly whatsappUrl = 'https://wa.me/5577991248244';
   protected readonly emailAddress = 'contato@jiuthai.com';
   protected readonly contactForm: FormGroup;
   protected submitAttempted = false;
