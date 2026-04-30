@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { SiteShell } from '../../components/site-shell/site-shell';
 
 @Component({
   selector: 'app-sobre',
-  imports: [RouterLink, SiteShell],
+  imports: [SiteShell],
   templateUrl: './sobre.html',
   styleUrl: './sobre.css',
 })

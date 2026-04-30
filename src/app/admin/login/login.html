@@ -1,0 +1,61 @@
+<app-site-shell>
+  <main class="admin-login-page" aria-labelledby="admin-login-title">
+    <div class="admin-login-wrapper">
+      <section class="admin-login-card" aria-label="Acesso ao painel administrativo">
+        <div class="admin-login-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Zm7 11H7v-7h10v7Z"
+            />
+          </svg>
+        </div>
+
+        <h1 class="admin-login-title" id="admin-login-title">Painel Administrador</h1>
+        <p class="admin-login-subtitle">Digite a senha para acessar o painel</p>
+
+        <form
+          class="admin-login-form"
+          [formGroup]="loginForm"
+          (ngSubmit)="submitLogin()"
+          novalidate
+        >
+          <div class="admin-login-controls">
+            <input
+              class="admin-login-input"
+              id="admin-login-password"
+              type="password"
+              formControlName="password"
+              placeholder="Senha de Acesso"
+              autocomplete="current-password"
+              aria-label="Senha de acesso"
+              aria-describedby="admin-login-error"
+              [attr.aria-invalid]="errorMessage ? 'true' : null"
+              (blur)="validatePasswordField()"
+              (input)="clearPasswordErrorOnInput()"
+            />
+
+            <button class="admin-login-button" type="submit">Acessar</button>
+
+            <a
+              class="admin-login-webmail"
+              [href]="webmailUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Webmail da Jiu Thai
+            </a>
+          </div>
+
+          <p
+            class="admin-login-error"
+            [class.admin-login-error--visible]="errorMessage"
+            id="admin-login-error"
+            aria-live="polite"
+          >
+            {{ errorMessage }}
+          </p>
+        </form>
+      </section>
+    </div>
+  </main>
+</app-site-shell>

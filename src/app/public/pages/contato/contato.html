@@ -1,16 +1,13 @@
 <app-site-shell>
   <main class="contact-page">
-    <section class="contact-page__section">
-
-      <header class="contact-page__header">
-        <p class="contact-page__eyebrow">Fale com a gente</p>
-        <h1 class="contact-page__title">Contato</h1>
+    <section class="contact-section">
+      <header class="contact-header">
+        <p class="contact-header__eyebrow">Fale com a gente</p>
+        <h1 class="contact-header__title">Contato</h1>
       </header>
 
-      <div class="contact-layout">
-
-        <!-- ── Informações de contato ──────────────────────────── -->
-        <aside class="contact-info" aria-label="Informações de contato">
+      <div class="contact-grid">
+        <aside class="contact-info-card" aria-label="Informações de contato">
           <div class="contact-info__item">
             <p class="contact-info__label">WhatsApp</p>
             <a
@@ -39,87 +36,83 @@
           </div>
         </aside>
 
-        <!-- ── Formulário ──────────────────────────────────────── -->
         <section class="contact-form-card" aria-labelledby="contact-form-title">
           <h2 class="contact-form-card__title" id="contact-form-title">Fale Conosco</h2>
 
-          <form
-            class="contact-form"
-            [formGroup]="contactForm"
-            (ngSubmit)="onSubmit()"
-            novalidate
-          >
-            <!-- Nome + E-mail em linha -->
+          <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
             <div class="contact-form__row">
-              <div class="contact-form__field">
-                <label class="contact-form__label" for="contact-name">Nome</label>
+              <div class="contact-field">
+                <label class="contact-label" for="contact-name">Nome</label>
                 <input
-                  class="contact-form__input"
-                  [class.contact-form__input--error]="isFieldInvalid('name')"
+                  class="contact-input"
+                  [class.contact-input--error]="isFieldInvalid('name')"
                   id="contact-name"
                   type="text"
                   formControlName="name"
                   autocomplete="name"
                   aria-describedby="contact-name-error"
+                  [attr.aria-invalid]="isFieldInvalid('name') ? 'true' : null"
                 />
                 <p
-                  class="contact-form__error"
+                  class="contact-error"
+                  [class.contact-error--visible]="isFieldInvalid('name')"
                   id="contact-name-error"
-                  *ngIf="isFieldInvalid('name')"
-                  role="alert"
-                >{{ getFieldError('name') }}</p>
+                  aria-live="polite"
+                >
+                  {{ getFieldError('name') }}
+                </p>
               </div>
 
-              <div class="contact-form__field">
-                <label class="contact-form__label" for="contact-email">E-mail</label>
+              <div class="contact-field">
+                <label class="contact-label" for="contact-email">E-mail</label>
                 <input
-                  class="contact-form__input"
-                  [class.contact-form__input--error]="isFieldInvalid('email')"
+                  class="contact-input"
+                  [class.contact-input--error]="isFieldInvalid('email')"
                   id="contact-email"
                   type="email"
                   formControlName="email"
                   autocomplete="email"
                   aria-describedby="contact-email-error"
+                  [attr.aria-invalid]="isFieldInvalid('email') ? 'true' : null"
                 />
                 <p
-                  class="contact-form__error"
+                  class="contact-error"
+                  [class.contact-error--visible]="isFieldInvalid('email')"
                   id="contact-email-error"
-                  *ngIf="isFieldInvalid('email')"
-                  role="alert"
-                >{{ getFieldError('email') }}</p>
+                  aria-live="polite"
+                >
+                  {{ getFieldError('email') }}
+                </p>
               </div>
             </div>
 
-            <!-- Mensagem -->
-            <div class="contact-form__field">
-              <label class="contact-form__label" for="contact-message">Mensagem</label>
+            <div class="contact-field">
+              <label class="contact-label" for="contact-message">Mensagem</label>
               <textarea
-                class="contact-form__input contact-form__textarea"
-                [class.contact-form__input--error]="isFieldInvalid('message')"
+                class="contact-input contact-textarea"
+                [class.contact-input--error]="isFieldInvalid('message')"
                 id="contact-message"
-                rows="6"
                 formControlName="message"
                 aria-describedby="contact-message-error"
+                [attr.aria-invalid]="isFieldInvalid('message') ? 'true' : null"
               ></textarea>
               <p
-                class="contact-form__error"
+                class="contact-error"
+                [class.contact-error--visible]="isFieldInvalid('message')"
                 id="contact-message-error"
-                *ngIf="isFieldInvalid('message')"
-                role="alert"
-              >{{ getFieldError('message') }}</p>
+                aria-live="polite"
+              >
+                {{ getFieldError('message') }}
+              </p>
             </div>
 
-            <!-- Ações -->
-            <div class="contact-form__actions">
-              <button
-                class="contact-form__button contact-form__button--primary"
-                type="submit"
-              >
+            <div class="contact-actions">
+              <button class="contact-button contact-button--primary" type="submit">
                 Enviar por e-mail
               </button>
 
               <a
-                class="contact-form__button contact-form__button--secondary"
+                class="contact-button contact-button--secondary"
                 [href]="whatsappUrl"
                 target="_blank"
                 rel="noreferrer"
@@ -129,7 +122,6 @@
             </div>
           </form>
         </section>
-
       </div>
     </section>
   </main>

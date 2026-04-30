@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SiteShell } from '../../components/site-shell/site-shell';
 
 @Component({
   selector: 'app-contato',
-  imports: [CommonModule, ReactiveFormsModule, SiteShell],
+  imports: [ReactiveFormsModule, SiteShell],
   templateUrl: './contato.html',
   styleUrl: './contato.css',
 })
@@ -20,7 +19,12 @@ export class Contato {
     this.contactForm = this.formBuilder.group({
       name: [
         '',
-        [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(/^[A-Za-zÀ-ÿ\s]+$/)],
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(40),
+          Validators.pattern(/^[A-Za-zÀ-ÿ\s]+$/),
+        ],
       ],
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(600)]],
@@ -29,13 +33,15 @@ export class Contato {
 
   protected isFieldInvalid(fieldName: string): boolean {
     const control = this.contactForm.get(fieldName);
-    return !!control && control.invalid && (control.touched || this.submitAttempted);
+    return (
+      !!control && control.invalid && (control.touched || control.dirty || this.submitAttempted)
+    );
   }
 
   protected getFieldError(fieldName: string): string {
     const control = this.contactForm.get(fieldName);
 
-    if (!control?.errors || !(control.touched || this.submitAttempted)) {
+    if (!control?.errors || !(control.touched || control.dirty || this.submitAttempted)) {
       return '';
     }
 

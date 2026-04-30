@@ -1,0 +1,331 @@
+:host {
+  display: block;
+}
+
+:host *,
+:host *::before,
+:host *::after {
+  box-sizing: border-box;
+}
+
+/* ─── Page shell ─────────────────────────────────────────────────────────── */
+
+.admin-login-page {
+  background: #080808;
+  color: #fff;
+  font-family: 'Montserrat', Arial, sans-serif;
+
+  /*
+   * Use dvh (dynamic viewport height) so the container does NOT resize when
+   * the mobile on-screen keyboard appears. This prevents the card from
+   * shifting on focus. Falls back to svh → vh in order of support.
+   */
+  height: calc(100dvh - 141px);
+  min-height: 560px;
+
+  /* Prevent any descendant from triggering page-level scroll */
+  overflow: hidden;
+}
+
+/* ─── Centred wrapper ────────────────────────────────────────────────────── */
+
+.admin-login-wrapper {
+  align-items: center;
+  background: #080808;
+  display: grid;
+  justify-content: center;
+  min-height: 100%;
+  padding: 1.25rem;
+  width: 100%;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+
+.admin-login-card {
+  animation: adminLoginFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  background: linear-gradient(160deg, #1c1c1c 0%, #111111 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 22px;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.04) inset,
+    0 28px 64px rgba(0, 0, 0, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  max-width: 460px;
+  padding: clamp(1.75rem, 5vw, 2.5rem);
+  text-align: center;
+  width: min(100%, 460px);
+
+  /* Isolate stacking context so inner transforms don't bleed */
+  isolation: isolate;
+}
+
+/* ─── Icon ───────────────────────────────────────────────────────────────── */
+
+.admin-login-icon {
+  align-items: center;
+  background: linear-gradient(145deg, #252525, #1a1a1a);
+  border: 1px solid rgba(247, 195, 33, 0.3);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  height: 64px;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+  transition: border-color 0.3s ease;
+  width: 64px;
+}
+
+.admin-login-icon svg {
+  fill: #f7c321;
+  filter: drop-shadow(0 0 8px rgba(247, 195, 33, 0.35));
+  height: 30px;
+  width: 30px;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+
+.admin-login-title {
+  color: #fff;
+  font-size: clamp(1.5rem, 5vw, 1.95rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.admin-login-subtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.93rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  margin: 0.6rem 0 1.8rem;
+}
+
+/* ─── Form layout ────────────────────────────────────────────────────────── */
+
+.admin-login-form {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.admin-login-controls {
+  display: grid;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+/* ─── Input ──────────────────────────────────────────────────────────────── */
+
+.admin-login-input {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 13px;
+  color: #fff;
+  display: block;
+  font:
+    500 0.97rem/1.4 'Montserrat',
+    Arial,
+    sans-serif;
+  height: 52px;
+  outline: none;
+  padding: 0 1.1rem;
+
+  /*
+   * scroll-margin: 0 prevents the browser from adding extra scroll offset
+   * when this element receives focus, which is a secondary guard against
+   * the panel-jump bug.
+   */
+  scroll-margin: 0;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+  width: 100%;
+}
+
+.admin-login-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.admin-login-input:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.admin-login-input:focus {
+  background: rgba(247, 195, 33, 0.04);
+  border-color: #f7c321;
+  box-shadow:
+    inset 0 0 0 1px rgba(247, 195, 33, 0.18),
+    0 0 20px rgba(247, 195, 33, 0.07);
+}
+
+.admin-login-input[aria-invalid='true'] {
+  border-color: rgba(255, 130, 100, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 130, 100, 0.15);
+}
+
+/* ─── Inline error message ───────────────────────────────────────────────── */
+
+.admin-login-error {
+  color: #ff9b7d;
+  font-size: 0.81rem;
+  font-weight: 600;
+  height: 1.25rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  text-align: left;
+  transition: opacity 0.18s ease;
+  visibility: hidden;
+}
+
+.admin-login-error--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.admin-login-button,
+.admin-login-webmail {
+  align-items: center;
+  border-radius: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  font:
+    800 0.94rem/1 'Montserrat',
+    Arial,
+    sans-serif;
+  height: 52px;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  padding: 0 1.2rem;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+  width: 100%;
+}
+
+.admin-login-button {
+  background: #f7c321;
+  border: 1px solid #f7c321;
+  color: #111;
+}
+
+.admin-login-button:hover {
+  background: #ffd145;
+  border-color: #ffd145;
+  box-shadow:
+    0 0 28px rgba(247, 195, 33, 0.3),
+    0 8px 20px rgba(247, 195, 33, 0.2);
+  transform: translateY(-1px);
+}
+
+.admin-login-button:active {
+  transform: translateY(0);
+}
+
+.admin-login-webmail {
+  background: transparent;
+  border: 1px solid rgba(247, 195, 33, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.admin-login-webmail:hover {
+  background: rgba(247, 195, 33, 0.08);
+  border-color: rgba(247, 195, 33, 0.75);
+  box-shadow: 0 0 20px rgba(247, 195, 33, 0.08);
+  color: #f7c321;
+  transform: translateY(-1px);
+}
+
+.admin-login-webmail:active {
+  transform: translateY(0);
+}
+
+.admin-login-button:focus-visible,
+.admin-login-webmail:focus-visible {
+  outline: 3px solid rgba(247, 195, 33, 0.4);
+  outline-offset: 3px;
+}
+
+/* ─── Entry animation ────────────────────────────────────────────────────── */
+
+@keyframes adminLoginFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .admin-login-page {
+    /* svh = small viewport height — stable across keyboard show/hide */
+    height: calc(100svh - 118px);
+    min-height: 540px;
+  }
+
+  .admin-login-wrapper {
+    padding: 1rem;
+  }
+
+  .admin-login-card {
+    border-radius: 18px;
+    padding: 1.6rem 1.4rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .admin-login-wrapper {
+    padding-inline: 0.75rem;
+  }
+
+  .admin-login-card {
+    border-radius: 16px;
+    padding: 1.35rem 1.15rem;
+  }
+
+  .admin-login-button,
+  .admin-login-webmail {
+    font-size: 0.86rem;
+    height: 48px;
+  }
+
+  .admin-login-input {
+    height: 48px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .admin-login-card {
+    animation: none;
+  }
+
+  .admin-login-button,
+  .admin-login-webmail,
+  .admin-login-input {
+    transition: none;
+  }
+}

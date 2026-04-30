@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { AdminDashboard } from './admin/dashboard/dashboard';
+import { Login } from './admin/login/login';
 import { Aulas } from './public/pages/aulas/aulas';
 import { Conhecer } from './public/pages/conhecer/conhecer';
 import { Contato } from './public/pages/contato/contato';
@@ -25,5 +27,7 @@ export const routes: Routes = [
   { path: 'reservar-aula', component: ReservarAula },
   { path: 'politica-de-privacidade', component: PoliticaDePrivacidade },
   { path: 'termos-e-condicoes', component: TemosECondicoes },
+  { path: 'admin', component: Login },
+  { path: 'admin/dashboard', component: AdminDashboard },
   { path: '**', redirectTo: '' },
 ];
